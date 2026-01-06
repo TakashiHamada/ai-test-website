@@ -276,6 +276,7 @@ footer p {
     height: 100%;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     top: 0;
     left: 0;
 }
@@ -286,21 +287,21 @@ footer p {
     font-size: 1.2rem;
     font-weight: bold;
     color: #2d3748;
-    transform: rotate(calc(var(--rotation) * -1deg));
 }
 
-.hour-marker:nth-child(1) span { transform: rotate(0deg); }
-.hour-marker:nth-child(2) span { transform: rotate(-30deg); }
-.hour-marker:nth-child(3) span { transform: rotate(-60deg); }
-.hour-marker:nth-child(4) span { transform: rotate(-90deg); }
-.hour-marker:nth-child(5) span { transform: rotate(-120deg); }
-.hour-marker:nth-child(6) span { transform: rotate(-150deg); }
-.hour-marker:nth-child(7) span { transform: rotate(-180deg); }
-.hour-marker:nth-child(8) span { transform: rotate(-210deg); }
-.hour-marker:nth-child(9) span { transform: rotate(-240deg); }
-.hour-marker:nth-child(10) span { transform: rotate(-270deg); }
-.hour-marker:nth-child(11) span { transform: rotate(-300deg); }
-.hour-marker:nth-child(12) span { transform: rotate(-330deg); }
+/* 各マーカーのspanを親の回転の逆方向に回転させて正立させる */
+.hour-marker:nth-of-type(1) span { transform: rotate(0deg); }
+.hour-marker:nth-of-type(2) span { transform: rotate(-30deg); }
+.hour-marker:nth-of-type(3) span { transform: rotate(-60deg); }
+.hour-marker:nth-of-type(4) span { transform: rotate(-90deg); }
+.hour-marker:nth-of-type(5) span { transform: rotate(-120deg); }
+.hour-marker:nth-of-type(6) span { transform: rotate(-150deg); }
+.hour-marker:nth-of-type(7) span { transform: rotate(-180deg); }
+.hour-marker:nth-of-type(8) span { transform: rotate(-210deg); }
+.hour-marker:nth-of-type(9) span { transform: rotate(-240deg); }
+.hour-marker:nth-of-type(10) span { transform: rotate(-270deg); }
+.hour-marker:nth-of-type(11) span { transform: rotate(-300deg); }
+.hour-marker:nth-of-type(12) span { transform: rotate(-330deg); }
 
 /* 時計の針 */
 .hand {
