@@ -98,4 +98,54 @@ document.querySelectorAll('.feature-card').forEach(card => {
     observer.observe(card);
 });
 
+// アナログ時計の機能
+function updateClock() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+
+    // 時針、分針、秒針の角度を計算
+    const secondDegrees = (seconds / 60) * 360;
+    const minuteDegrees = (minutes / 60) * 360 + (seconds / 60) * 6;
+    const hourDegrees = (hours % 12 / 12) * 360 + (minutes / 60) * 30;
+
+    // 針の要素を取得
+    const hourHand = document.getElementById('hour-hand');
+    const minuteHand = document.getElementById('minute-hand');
+    const secondHand = document.getElementById('second-hand');
+
+    // 針の角度を設定
+    if (hourHand) {
+        hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+    }
+    if (minuteHand) {
+        minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
+    }
+    if (secondHand) {
+        secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+    }
+
+    // デジタル時計の更新
+    const digitalTime = document.getElementById('digital-time');
+    if (digitalTime) {
+        const formattedHours = String(hours).padStart(2, '0');
+        const formattedMinutes = String(minutes).padStart(2, '0');
+        const formattedSeconds = String(seconds).padStart(2, '0');
+        digitalTime.textContent = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+    }
+}
+
+// 時計を初期化して1秒ごとに更新
+function initClock() {
+    updateClock(); // 初回実行
+    setInterval(updateClock, 1000); // 1秒ごとに更新
+}
+
+// ページ読み込み時に時計を開始
+if (document.getElementById('hour-hand')) {
+    initClock();
+    console.log('⏰ Analog clock initialized!');
+}
+
 console.log('GitHub Pages template loaded successfully! 🚀');

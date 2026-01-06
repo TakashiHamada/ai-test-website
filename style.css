@@ -237,6 +237,144 @@ footer p {
     }
 }
 
+/* 時計セクション */
+.clock-section {
+    background: #f7fafc;
+    padding: 80px 0;
+}
+
+.clock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.analog-clock {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1),
+                inset 0 0 20px rgba(0, 0, 0, 0.05);
+    border: 8px solid #667eea;
+}
+
+.clock-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+/* 時刻マーカー */
+.hour-marker {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    left: 0;
+}
+
+.hour-marker span {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2d3748;
+    transform: rotate(calc(var(--rotation) * -1deg));
+}
+
+.hour-marker:nth-child(1) span { transform: rotate(0deg); }
+.hour-marker:nth-child(2) span { transform: rotate(-30deg); }
+.hour-marker:nth-child(3) span { transform: rotate(-60deg); }
+.hour-marker:nth-child(4) span { transform: rotate(-90deg); }
+.hour-marker:nth-child(5) span { transform: rotate(-120deg); }
+.hour-marker:nth-child(6) span { transform: rotate(-150deg); }
+.hour-marker:nth-child(7) span { transform: rotate(-180deg); }
+.hour-marker:nth-child(8) span { transform: rotate(-210deg); }
+.hour-marker:nth-child(9) span { transform: rotate(-240deg); }
+.hour-marker:nth-child(10) span { transform: rotate(-270deg); }
+.hour-marker:nth-child(11) span { transform: rotate(-300deg); }
+.hour-marker:nth-child(12) span { transform: rotate(-330deg); }
+
+/* 時計の針 */
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    border-radius: 10px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hour-hand {
+    width: 8px;
+    height: 70px;
+    background: linear-gradient(to top, #2d3748, #4a5568);
+    margin-left: -4px;
+    z-index: 3;
+}
+
+.minute-hand {
+    width: 6px;
+    height: 100px;
+    background: linear-gradient(to top, #667eea, #764ba2);
+    margin-left: -3px;
+    z-index: 2;
+}
+
+.second-hand {
+    width: 3px;
+    height: 110px;
+    background: #f56565;
+    margin-left: -1.5px;
+    z-index: 4;
+    transition: transform 0.05s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.center-dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #2d3748;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.center-dot::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #667eea;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* デジタル時計 */
+.digital-time {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2d3748;
+    font-family: 'Courier New', monospace;
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #667eea;
+}
+
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
     .nav-menu {
@@ -259,6 +397,27 @@ footer p {
     .feature-grid {
         grid-template-columns: 1fr;
     }
+
+    .analog-clock {
+        width: 250px;
+        height: 250px;
+    }
+
+    .hour-hand {
+        height: 60px;
+    }
+
+    .minute-hand {
+        height: 85px;
+    }
+
+    .second-hand {
+        height: 95px;
+    }
+
+    .digital-time {
+        font-size: 2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -270,5 +429,31 @@ footer p {
     .nav-menu {
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .analog-clock {
+        width: 200px;
+        height: 200px;
+    }
+
+    .hour-hand {
+        height: 50px;
+    }
+
+    .minute-hand {
+        height: 70px;
+    }
+
+    .second-hand {
+        height: 80px;
+    }
+
+    .hour-marker span {
+        font-size: 1rem;
+    }
+
+    .digital-time {
+        font-size: 1.5rem;
+        padding: 0.75rem 1.5rem;
     }
 }
